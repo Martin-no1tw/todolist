@@ -6,7 +6,7 @@ mongoose.connect('mongodb://localhost/todolist')
 const db = mongoose.connection
 
 db.on('error', () => {
-  console.lot('mongodb error!')
+  console.log('mongodb error!')
 })
 
 db.once('open', () => {
