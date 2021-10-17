@@ -9,7 +9,7 @@ const PORT = process.env.PORT || 3000
 
 const Todo = require('./models/todo')
 
-const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost/todo-list'
+const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost/todolist'
 mongoose.connect(MONGODB_URI)
 
 const db = mongoose.connection
