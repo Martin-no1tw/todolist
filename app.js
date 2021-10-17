@@ -5,11 +5,14 @@ const app = express()
 const exphbs = require('express-handlebars')
 const bodyParser = require('body-parser')
 const PORT = process.env.PORT || 3000
-const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost/todolist'
+const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost/todo-list'
 
 const Todo = require('./models/todo')
 
-mongoose.connect(MONGODB_URI)
+mongoose.connect(MONGODB_URI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+})
 
 const db = mongoose.connection
 
