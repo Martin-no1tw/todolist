@@ -4,10 +4,12 @@ const mongoose = require('mongoose')
 const app = express()
 const exphbs = require('express-handlebars')
 const bodyParser = require('body-parser')
+const PORT = process.env.PORT || 3000
+const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost/todo-list'
 
 const Todo = require('./models/todo')
 
-mongoose.connect('mongodb://localhost/todolist')
+mongoose.connect(MONGODB_URI)
 
 const db = mongoose.connection
 
@@ -81,8 +83,8 @@ app.post('/todos/:id/delete', (req, res) => {
 })
 
 // 設定 port 3000
-app.listen(3000, () => {
-  console.log('App is running on http://localhost:3000')
+app.listen(PORT, () => {
+  console.log(`App is running on http://localhost:${PORT}`)
 })
 
 
