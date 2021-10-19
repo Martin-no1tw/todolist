@@ -5,7 +5,7 @@ const exphbs = require('express-handlebars')
 const bodyParser = require('body-parser')
 const PORT = process.env.PORT || 3000
 
-const routes = require('./routes')
+const routes = require('./Routes')
 require('./config/mongoose')
 
 const Todo = require('./models/todo')
