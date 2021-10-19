@@ -57,5 +57,5 @@ router.post('/todos/:id/delete', (req, res) => {
     .then(todo => todo.remove())
     .then(() => res.redirect('/'))
     .catch(error => console.log(error))
-  )
+}) 
   module.exports =  router  
