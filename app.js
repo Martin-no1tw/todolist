@@ -2,20 +2,21 @@
 const express = require('express')
 const app = express()
 const exphbs = require('express-handlebars')
+
 const bodyParser = require('body-parser')
-const PORT = process.env.PORT || 3000
+const methodOverride = require('method-override')
 
-const routes = require('./Routes')
-app.use(routes)
-
+const routes = require('./routes')
 require('./config/mongoose')
 
+app.use(bodyParser.urlencoded({ extended: true }))
+app.use(methodOverride('_method'))
 
-
-const Todo = require('./models/todo')
-
+const PORT = process.env.PORT || 3000
 app.engine('hbs', exphbs({ defaultlayout: 'main', extname: '.hbs' }))
 app.set('view engine', 'hbs')
+
+app.use(routes)
 
 
 
