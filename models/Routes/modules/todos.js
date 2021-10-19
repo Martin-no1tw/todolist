@@ -6,7 +6,6 @@ const Todo = require('../../models/todo')
 router.get('/new', (req, res) => {
   return res.render('new')
 })
-router.use(bodyParser.urlencoded({ extended: true }))
 
 router.post('/', (req, res) => {
   const name = req.body.name
@@ -51,4 +50,6 @@ router.delete('/:id', (req, res) => {
     .then(() => res.redirect('/'))
     .catch(error => console.log(error))
 })
+
+
 module.exports = router
