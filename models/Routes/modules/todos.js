@@ -51,4 +51,4 @@ router.delete('/:id', (req, res) => {
     .then(() => res.redirect('/'))
     .catch(error => console.log(error))
 })
-.exports = router
+module.exports = router
