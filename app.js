@@ -1,27 +1,14 @@
 // 載入 express 並建構應用程式伺服器
 const express = require('express')
-const mongoose = require('mongoose')
 const app = express()
 const exphbs = require('express-handlebars')
 const bodyParser = require('body-parser')
 const PORT = process.env.PORT || 3000
 
+const routes = require('./routes')
+require('./config/mongoose')
 
 const Todo = require('./models/todo')
-
-const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost/todolist'
-
-mongoose.connect(MONGODB_URI)
-
-const db = mongoose.connection
-
-db.on('error', () => {
-  console.log('mongoose error!')
-})
-
-db.once('open', () => {
-  console.log('mongoose connected!')
-})
 
 app.engine('hbs', exphbs({ defaultlayout: 'main', extname: '.hbs' }))
 app.set('view engine', 'hbs')
@@ -66,10 +53,11 @@ app.get('/todos/:id/edit', (req, res) => {
 
 app.post('/todos/:id/edit', (req, res) => {
   const id = req.params.id
-  const name = req.body.name
+  const { name, isDone } = req.body
   return Todo.findById(id)
     .then(todo => {
       todo.name = name
+      todo.isDone = isDone === 'on'
       return todo.save()
     })
     .then(() => res.redirect(`/todos/${id}`))

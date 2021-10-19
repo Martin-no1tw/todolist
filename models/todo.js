@@ -3,7 +3,11 @@ const Schema = mongoose.Schema
 const todoSchema = new Schema({
   name: {
     type: String,
-    require: true,
+    require: true
+  },
+  isDone: {
+    type: Boolean,
+    default: false
   }
 })
 
