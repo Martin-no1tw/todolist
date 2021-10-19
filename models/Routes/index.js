@@ -3,7 +3,7 @@ const router = express.Router()
 module.exports = router
 
 const routes = require('./routes')
-app.use(routes)
+
 
 // 引入 home 模組程式碼
 const home = require('./modules/home')
