@@ -5,7 +5,7 @@ const exphbs = require('express-handlebars')
 const session = require('express-session')
 const bodyParser = require('body-parser')
 const methodOverride = require('method-override')
-const usePassport = require('./config/passport')
+
 
 const routes = require('./routes')
 require('./config/mongoose')
@@ -19,6 +19,7 @@ app.use(session({
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(methodOverride('_method'))
 
+const usePassport = require('./config/passport')
 usePassport(app)
 
 const PORT = process.env.PORT || 3000
