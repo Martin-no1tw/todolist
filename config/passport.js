@@ -1,5 +1,5 @@
 const passport = require('passport')
-const Localstrategy = require('passport-local').Strategy
+const LocalStrategy = require('passport-local').Strategy
 
 module.exports = app => {
   // 初始化 Passport 模組
