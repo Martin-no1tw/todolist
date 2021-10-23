@@ -49,7 +49,6 @@ router.post('/register', (req, res) => {
         confirmPassword
       })
     }
-
     return User.create({
       name,
       email,
